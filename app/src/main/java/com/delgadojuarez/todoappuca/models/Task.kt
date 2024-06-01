@@ -1,4 +1,4 @@
-package com.delgadojuarez.todoappuca.ui.theme.Screens
+package com.delgadojuarez.todoappuca.models
 
 import android.os.Build
 import androidx.annotation.RequiresApi

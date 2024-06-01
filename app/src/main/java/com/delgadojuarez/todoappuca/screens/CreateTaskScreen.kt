@@ -1,4 +1,4 @@
-package com.delgadojuarez.todoappuca.ui.theme.Screens
+package com.delgadojuarez.todoappuca.screens
 
 import android.app.DatePickerDialog
 import android.os.Build
@@ -43,6 +43,7 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 
 import com.delgadojuarez.todoappuca.R
+import com.delgadojuarez.todoappuca.models.Task
 import com.delgadojuarez.todoappuca.ui.theme.bandera_color
 import com.delgadojuarez.todoappuca.ui.theme.campana_color
 import com.delgadojuarez.todoappuca.ui.theme.carita_feliz_color
