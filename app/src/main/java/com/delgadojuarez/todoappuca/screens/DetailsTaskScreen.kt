@@ -3,6 +3,7 @@ package com.delgadojuarez.todoappuca.screens
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -53,10 +55,7 @@ fun taskDetails(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-            contentColor = MaterialTheme.colorScheme.onSurface
-        )
+        color = task.color
     ) {
         Column(
             modifier = Modifier
@@ -85,13 +84,25 @@ fun taskDetails(
                     )
                 }
             }
-            if (editing) {
-                OutlinedTextField(
-                    value = copyDescription,
-                    onValueChange = { copyDescription = it }
+            Column {
+                if (editing) {
+                    OutlinedTextField(
+                        value = copyDescription,
+                        onValueChange = { copyDescription = it }
+                    )
+                } else {
+                    Text(text = description)
+                }
+                Text("Fecha limite: ${task.deadline.format(dateFormatter)}")
+                Text("Categoria: ${task.category}")
+            }
+            Box(
+                modifier = Modifier
+            ){
+                Switch(
+                    checked = task.completed,
+                    onCheckedChange = {task.completed = it}
                 )
-            } else {
-                Text(text = description)
             }
             Row(
                 modifier = Modifier

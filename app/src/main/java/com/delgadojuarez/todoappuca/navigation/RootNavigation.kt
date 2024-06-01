@@ -31,7 +31,7 @@ fun RootNavigation(
             composable(MainScreens.MainScreen.route) {
                 MainScreen(
                     viewModel = viewModel,
-                    onClick = { navController.navigate(MainScreens.DetailsScreen.route) }
+                    onClick = { navController.navigate(MainScreens.DetailsTaskScreen.route) }
                 )
             }
 

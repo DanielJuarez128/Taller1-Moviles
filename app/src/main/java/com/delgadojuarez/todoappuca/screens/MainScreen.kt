@@ -53,10 +53,10 @@ fun MainScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
             items(tasks) { task ->
-                TaskItem(
-                    task,
+                TaskItem(task, {
                     viewModel.saveDataFromSelectedTask(task)
-                )
+                    onClick
+                })
             }
         }
     }
@@ -85,13 +85,20 @@ fun TaskItem(
                 Icon(
                     imageVector = ImageVector.vectorResource(id = task.iconId),
                     contentDescription = null,
-                    modifier = Modifier.size(48.dp).padding(end = 8.dp)
+                    modifier = Modifier
+                        .size(48.dp)
+                        .padding(end = 8.dp)
                 )
                 Column {
                     Text(task.title)
                     Text(task.description)
                     Text("Fecha limite: ${task.deadline.format(dateFormatter)}")
                     Text("Categoria: ${task.category}")
+                    if (task.completed){
+                        Text(text = "Completada")
+                    }else{
+                        Text(text = "No completada")
+                    }
                 }
             }
         }
